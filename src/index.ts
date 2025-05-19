@@ -1,5 +1,6 @@
 import type { CmdModule, SlashCommand } from "$types";
 import { Client, Events, GatewayIntentBits } from "discord.js";
+import { Hono } from "hono";
 import { join } from "node:path/posix";
 import { chatInputCommandHandler } from "./lib/chatInputCommandHandler";
 console.log("Hello via Bun!");
@@ -23,7 +24,7 @@ for await (const file of tsGlob.scan(CMD_DIR)) {
     slashCmds.set(mod.json.name, mod);
 }
 //#endregion
-
+const hono = new Hono().get("/", c => c.text("Hello Hono!"));
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -55,3 +56,7 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 await client.login(Bun.env.DISCORD_TOKEN);
+Bun.serve({
+    fetch: hono.fetch,
+    port: Bun.env.PORT,
+});
