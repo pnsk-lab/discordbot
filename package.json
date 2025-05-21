@@ -1,5 +1,5 @@
 {
-  "name": "discordbot",
+  "name": "@pnsk-lab/discordbot",
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
@@ -15,6 +15,7 @@
   },
   "scripts": {
     "dev": "bun run --watch src/index.ts",
+    "build": "echo 'No need to build'",
     "start": "bun run src/index.ts"
   }
 }
