@@ -1,7 +1,7 @@
 import type { SlashCommand } from "$types";
 import { SlashCommandBuilder } from "discord.js";
 export default {
-    json: new SlashCommandBuilder()
+    data: new SlashCommandBuilder()
         .setName("alwaysthrow")
         .setDescription("This command always fails")
         .toJSON(),
