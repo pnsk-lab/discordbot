@@ -1,9 +1,4 @@
-import { integer, jsonb, pgTable, text } from "drizzle-orm/pg-core";
-
-export const github_channels = pgTable("github_channels", {
-    id: integer("id").primaryKey(),
-    channelId: text("channel_id").notNull(),
-});
+import { jsonb, pgTable, text } from "drizzle-orm/pg-core";
 export interface ActiveConfig {
     github_webhook: {
         bot_to_discord: {

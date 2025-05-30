@@ -3,7 +3,6 @@ const envSchema = v.object({
     NODE_ENV: v.string(),
     PORT: v.string(),
     DATABASE_URL: v.string(),
-    G2B_WH_SECRET: v.pipe(v.string(), v.description("GitHub to Bot Webhook Secret")),
     HOME_GUILD: v.pipe(v.string(), v.description("Home Guild ID")),
     DISCORD_TOKEN: v.pipe(v.string(), v.description("Discord Bot Token")),
 });

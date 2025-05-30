@@ -7,16 +7,19 @@ export * from "./drizzle/schema";
 let dbCache: ActiveConfig | null = null;
 
 export async function getActiveConfig() {
-    if (dbCache !== null) {
-        return dbCache;
+    // if (dbCache !== null) {
+    //     return dbCache;
+    // }
+    const row = await db.query.config.findFirst();
+
+    if (row === undefined) {
+        return (dbCache = await db
+            .insert(config)
+            .values({})
+            .returning()
+            .then(rows => rows[0].value)) as ActiveConfig;
     }
-    return db
-        .select()
-        .from(config)
-        .limit(1)
-        .then(rows => {
-            return (dbCache = rows[0].value);
-        });
+    return (dbCache = row.value as ActiveConfig); // Cache the result
 }
 export async function updateActiveConfig(newConfig: SetStateAction<ActiveConfig>) {
     if (typeof newConfig === "function") {

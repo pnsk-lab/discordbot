@@ -1,9 +1,7 @@
 import { env } from "$env";
 import type { CmdModule, SlashCommandInternal } from "$types";
 import { Client, Events, GatewayIntentBits } from "discord.js";
-import { Hono } from "hono";
 import { join } from "node:path/posix";
-import { registHandler, webhookApp } from "./githubmapper";
 import { chatInputCommandHandler } from "./lib/chatInputCommandHandler";
 console.log("Hello via Bun!");
 const IS_DEV = env.NODE_ENV === "development";
@@ -31,7 +29,6 @@ for await (const file of tsGlob.scan(CMD_DIR)) {
     });
 }
 //#endregion
-const hono = new Hono().get("/", c => c.text("Hello Hono!")).route("/", webhookApp);
 const client = new Client({
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.MessageContent],
 });
@@ -51,7 +48,6 @@ client.once(Events.ClientReady, async client => {
             .toArray()
     );
     console.log("Slash commands registered");
-    registHandler(client);
 });
 //MARK: Event Hooks
 client.on(Events.InteractionCreate, async interaction => {
@@ -59,7 +55,3 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 await client.login(env.DISCORD_TOKEN);
-Bun.serve({
-    fetch: hono.fetch,
-    port: env.PORT,
-});
