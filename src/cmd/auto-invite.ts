@@ -94,7 +94,7 @@ async function setupAutoInvite(interaction: ChatInputCommandInteraction<"cached"
         })
         .then(
             () => interaction.reply(`Auto-invite setup complete for role ${role.name}.`),
-            async err => {
+            async (err: any) => {
                 if (err.code === "P2002") {
                     // If the guild is already registered, update it
                     await prisma.guild.update({
@@ -134,7 +134,7 @@ async function registerAutoInvite(
                 guildId: forumChannel.guild.id,
             },
         })
-        .catch(err => {
+        .catch((err: any) => {
             if (err.code === "P2002") {
                 // If the forum channel is already registered, update it
                 return prisma.autoInviteForum.update({

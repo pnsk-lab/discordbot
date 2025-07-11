@@ -1,5 +1,5 @@
+import { PrismaClient } from "@prisma/client";
 import * as v from "valibot";
-import { PrismaClient } from "./generated/prisma";
 const envSchema = v.object({
     NODE_ENV: v.optional(v.string()),
     DATABASE_URL: v.string(),

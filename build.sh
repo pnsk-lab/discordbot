@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 echo "Running build script..."
-
-pnpm exec prisma migrate deploy
-# pnpm exec prisma generate
+pwd
+ls
+./node_modules/.bin/prisma migrate deploy
+./node_modules/.bin/prisma generate
 # ?
 
 echo "Complete!"
