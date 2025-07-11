@@ -1,7 +1,8 @@
-import { env } from "$env";
+import { env, prisma } from "$env";
 import type { CmdModule, SlashCommandInternal } from "$types";
 import { Client, Events, GatewayIntentBits } from "discord.js";
 import { join } from "node:path/posix";
+import { bulkInvite } from "./lib/bulkinvite";
 import { chatInputCommandHandler } from "./lib/chatInputCommandHandler";
 console.log("Hello via Bun!");
 const IS_DEV = env.NODE_ENV === "development";
@@ -52,6 +53,21 @@ client.once(Events.ClientReady, async client => {
 //MARK: Event Hooks
 client.on(Events.InteractionCreate, async interaction => {
     if (interaction.isChatInputCommand()) chatInputCommandHandler(interaction, slashCmds);
+});
+
+client.on(Events.ThreadCreate, async thread => {
+    if (!thread.parentId) return;
+    const autoInvite = await prisma.autoInviteForum.findUnique({
+        where: { id: thread.parentId },
+        include: { guild: true },
+    });
+    if (!autoInvite) return;
+    const ignored = thread.appliedTags.includes(autoInvite.ignoredTag!);
+    // If it's inverted, send it only if it has the ignored tag. Otherwise,
+    // ignore it if it has ignored. After all, if both values ​​are the same, that's it.
+    if (ignored !== autoInvite.inverted) return;
+    console.log(`Inviting users to thread ${thread.id} in guild ${thread.guild.id}`);
+    await bulkInvite(thread.guild, thread.id, autoInvite.guild.bulkInviteRoleId);
 });
 
 await client.login(env.DISCORD_TOKEN);

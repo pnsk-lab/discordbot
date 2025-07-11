@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AutoInviteForum {
+  /// Guild of the forum
+  guild      Guild   @relation(fields: [guildId], references: [id])
+  guildId    String
+  /// Channel id of the forum
+  id         String  @id
+  /// 招待を禁止したいときのタグ(反転可能)
+  ignoredTag String?
+  /// 自動招待の反転
+  inverted   Boolean @default(false)
+}
+
+model Guild {
+  id               String            @id
+  bulkInviteRoleId String
+  autoInviteForum  AutoInviteForum[]
+}
