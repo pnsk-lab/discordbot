@@ -2,6 +2,6 @@
 
 echo "Running build script..."
 pnpm install
-pnpm migrate deploy
+pnpm prisma migrate deploy
 
 echo "Complete!"
