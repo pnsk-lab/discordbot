@@ -71,3 +71,13 @@ client.on(Events.ThreadCreate, async thread => {
 });
 
 await client.login(env.DISCORD_TOKEN);
+if (env.RENDER === "true") {
+    console.log("Running on Render, starting anti-kill service...");
+    Bun.serve({
+        fetch(req) {
+            return new Response("Hello from Bun! This is a Discord bot running with Bun.");
+        },
+        hostname: "0.0.0.0",
+        port: "10000",
+    });
+}

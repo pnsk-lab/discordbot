@@ -5,6 +5,7 @@ const envSchema = v.object({
     DATABASE_URL: v.string(),
     HOME_GUILD: v.pipe(v.string(), v.description("Home Guild ID")),
     DISCORD_TOKEN: v.pipe(v.string(), v.description("Discord Bot Token")),
+    RENDER: v.optional(v.literal("true")),
 });
 export const env = v.parse(envSchema, Bun.env);
 
