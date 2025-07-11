@@ -13,13 +13,16 @@ importers:
         version: 14.0.0
       '@prisma/client':
         specifier: ^6.11.1
-        version: 6.11.1(prisma@6.11.1)
+        version: 6.11.1(prisma@6.11.1(typescript@5.8.3))(typescript@5.8.3)
       discord.js:
         specifier: ^14.19.3
         version: 14.19.3
+      typescript:
+        specifier: ^5.0.0
+        version: 5.8.3
       valibot:
         specifier: ^1.1.0
-        version: 1.1.0
+        version: 1.1.0(typescript@5.8.3)
     devDependencies:
       '@octokit/openapi-webhooks-types':
         specifier: ^11.0.0
@@ -29,7 +32,7 @@ importers:
         version: 1.2.13
       prisma:
         specifier: ^6.11.1
-        version: 6.11.1
+        version: 6.11.1(typescript@5.8.3)
 
 packages:
 
@@ -179,6 +182,11 @@ packages:
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
+  typescript@5.8.3:
+    resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   undici-types@6.21.0:
     resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
@@ -275,9 +283,10 @@ snapshots:
       '@octokit/request-error': 7.0.0
       '@octokit/webhooks-methods': 6.0.0
 
-  '@prisma/client@6.11.1(prisma@6.11.1)':
+  '@prisma/client@6.11.1(prisma@6.11.1(typescript@5.8.3))(typescript@5.8.3)':
     optionalDependencies:
-      prisma: 6.11.1
+      prisma: 6.11.1(typescript@5.8.3)
+      typescript: 5.8.3
 
   '@prisma/config@6.11.1':
     dependencies:
@@ -362,19 +371,25 @@ snapshots:
 
   magic-bytes.js@1.12.1: {}
 
-  prisma@6.11.1:
+  prisma@6.11.1(typescript@5.8.3):
     dependencies:
       '@prisma/config': 6.11.1
       '@prisma/engines': 6.11.1
+    optionalDependencies:
+      typescript: 5.8.3
 
   ts-mixer@6.0.4: {}
 
   tslib@2.8.1: {}
 
+  typescript@5.8.3: {}
+
   undici-types@6.21.0: {}
 
   undici@6.21.1: {}
 
-  valibot@1.1.0: {}
+  valibot@1.1.0(typescript@5.8.3):
+    optionalDependencies:
+      typescript: 5.8.3
 
   ws@8.18.2: {}
