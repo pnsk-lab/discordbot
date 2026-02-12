@@ -3,9 +3,10 @@
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
+    "@biomejs/biome": "^2.3.14",
     "@octokit/openapi-webhooks-types": "^11.0.0",
     "@types/bun": "latest",
-    "prisma": "^6.11.1"
+    "prisma": "^7.4.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
@@ -13,7 +14,8 @@
   "packageManager": "pnpm@9.14.2+sha1.5202b50ab92394b3c922d2e293f196e2df6d441b",
   "dependencies": {
     "@octokit/webhooks": "^14.0.0",
-    "@prisma/client": "^6.11.1",
+    "@prisma/adapter-pg": "^7.4.0",
+    "@prisma/client": "^7.4.0",
     "discord.js": "^14.19.3",
     "valibot": "^1.1.0"
   },

@@ -1,0 +1,22 @@
+{
+    "$schema": "https://biomejs.dev/schemas/2.3.14/schema.json",
+    "javascript": {
+        "formatter": {
+            "arrowParentheses": "asNeeded"
+        }
+    },
+    "assist": {
+        "actions": {
+            "source": {
+                "organizeImports": "off"
+            }
+        }
+    },
+    "linter": {
+        "rules": {
+            "style": {
+                "noNonNullAssertion": "off"
+            }
+        }
+    }
+}
