@@ -7,6 +7,10 @@ const envSchema = v.object({
 	HOME_GUILD: v.pipe(v.string(), v.description("Home Guild ID")),
 	DISCORD_TOKEN: v.pipe(v.string(), v.description("Discord Bot Token")),
 	RENDER: v.optional(v.literal("true")),
+	BOT_OWNERS: v.pipe(
+		v.string(),
+		v.transform(str => str.split(",")),
+	),
 });
 export const env = v.parse(envSchema, Bun.env);
 

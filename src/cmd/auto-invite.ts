@@ -1,5 +1,5 @@
 import { prisma } from "$env";
-import type { SlashCommand } from "$types";
+import type { SlashCommandDefinition } from "$types";
 import {
 	ChannelType,
 	type ChatInputCommandInteraction,
@@ -63,7 +63,7 @@ export default {
 						.setRequired(false),
 				),
 		),
-	async execute(interaction) {
+	async handle(interaction) {
 		const subCommand = interaction.options.getSubcommand(true);
 		if (!ensureInGuild(interaction)) return;
 		if (subCommand === Enum.Setup) {
@@ -80,7 +80,7 @@ export default {
 			await registerAutoInvite(interaction, forumChannel, ignoredTag, inverted);
 		}
 	},
-} satisfies SlashCommand;
+} satisfies SlashCommandDefinition;
 
 async function setupAutoInvite(
 	interaction: ChatInputCommandInteraction<"cached">,

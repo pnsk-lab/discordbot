@@ -1,5 +1,5 @@
 import { prisma } from "$env";
-import type { SlashCommand } from "$types";
+import type { SlashCommandDefinition } from "$types";
 import {
 	ChannelType,
 	InteractionContextType,
@@ -21,7 +21,7 @@ export default {
 				)
 				.setRequired(false),
 		),
-	async execute(interaction) {
+	async handle(interaction) {
 		if (!ensureInGuild(interaction)) return;
 		const confirmed = interaction.options.getBoolean("confirm") ?? false;
 
@@ -95,4 +95,4 @@ export default {
 			});
 		}
 	},
-} satisfies SlashCommand;
+} satisfies SlashCommandDefinition;
