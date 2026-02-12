@@ -1,6 +1,5 @@
 import { env } from "$env";
 import type { SlashCommandDefinition } from "$types";
-import { inspect } from "bun";
 import {
 	MessageFlags,
 	SlashCommandBuilder,
@@ -46,9 +45,9 @@ export async function handleExec(
 		"guild",
 		"client",
 		`
-  "use strict";
-    ${wrapUserCode(code)}
-  `,
+"use strict";
+${wrapUserCode(code)}
+`,
 	);
 	try {
 		const result = await fn(
@@ -58,7 +57,7 @@ export async function handleExec(
 			interaction.client,
 		);
 
-		const text = inspect(result, { depth: 2 }).slice(0, 1900);
+		const text = Bun.inspect(result, { depth: 2 }).slice(0, 1900);
 
 		await interaction.reply({
 			content: `\`\`\`ts\n${text}\n\`\`\``,
@@ -66,7 +65,7 @@ export async function handleExec(
 		});
 	} catch (error) {
 		await interaction.reply({
-			content: `\`\`\`ts\n${inspect(error).slice(0, 1900)}\n\`\`\``,
+			content: `\`\`\`ts\n${Bun.inspect(error).slice(0, 1900)}\n\`\`\``,
 			flags: MessageFlags.Ephemeral,
 		});
 	}

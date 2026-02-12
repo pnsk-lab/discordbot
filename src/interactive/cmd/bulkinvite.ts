@@ -6,8 +6,8 @@ import {
 	MessageFlags,
 	SlashCommandBuilder,
 } from "discord.js";
-import { bulkInvite } from "../lib/bulkinvite";
-import { ensureInGuild } from "../util/ensure";
+import { bulkInvite } from "../../lib/bulkinvite";
+import { ensureInGuild } from "../../util/ensure";
 export default {
 	data: new SlashCommandBuilder()
 		.setName("bulkinvite")

@@ -1,10 +1,10 @@
-import type { Result } from "$types";
 import {
 	MessageFlags,
 	roleMention,
 	type Guild,
 	type Snowflake,
 } from "discord.js";
+import { err, ok } from "../types/helper";
 
 export async function bulkInvite(
 	guild: Guild,
@@ -28,21 +28,4 @@ export async function bulkInvite(
 	});
 	await message.delete();
 	return ok();
-}
-
-export function ok(): Result<void, never>;
-export function ok<T>(value: T): Result<T, never>;
-export function ok(value?: unknown) {
-	return {
-		success: true,
-		value,
-		// biome-ignore lint/suspicious/noExplicitAny: shutup
-	} as any;
-}
-
-export function err<const E>(error: E): Result<never, E> {
-	return {
-		success: false,
-		error,
-	};
 }

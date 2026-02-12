@@ -16,7 +16,8 @@
     "@octokit/webhooks": "^14.0.0",
     "@prisma/adapter-pg": "^7.4.0",
     "@prisma/client": "^7.4.0",
-    "discord.js": "^14.19.3",
+    "discord.js": "^14.25.1",
+    "p-queue": "^9.1.0",
     "valibot": "^1.1.0"
   },
   "scripts": {

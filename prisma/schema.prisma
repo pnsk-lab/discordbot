@@ -32,3 +32,16 @@ model Guild {
   bulkInviteRoleId String
   autoInviteForum  AutoInviteForum[]
 }
+
+model DiscordForum {
+  id        String               @id
+  webhookId String               @unique
+  threads   DiscordForumThread[]
+}
+
+model DiscordForumThread {
+  id           String       @id
+  githubRepoId String       @unique
+  forumId      String
+  forum        DiscordForum @relation(fields: [forumId], references: [id])
+}

@@ -10,4 +10,6 @@
  */
 export type * from './models/AutoInviteForum.ts'
 export type * from './models/Guild.ts'
+export type * from './models/DiscordForum.ts'
+export type * from './models/DiscordForumThread.ts'
 export type * from './commonInputTypes.ts'

@@ -27,3 +27,13 @@ export type AutoInviteForum = Prisma.AutoInviteForumModel
  * 
  */
 export type Guild = Prisma.GuildModel
+/**
+ * Model DiscordForum
+ * 
+ */
+export type DiscordForum = Prisma.DiscordForumModel
+/**
+ * Model DiscordForumThread
+ * 
+ */
+export type DiscordForumThread = Prisma.DiscordForumThreadModel

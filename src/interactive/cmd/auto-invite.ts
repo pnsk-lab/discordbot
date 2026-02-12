@@ -10,7 +10,7 @@ import {
 	type Role,
 	SlashCommandBuilder,
 } from "discord.js";
-import { ensureInGuild } from "../util/ensure";
+import { ensureInGuild } from "../../util/ensure";
 
 const Enum = {
 	AutoInvite: "auto-invite",

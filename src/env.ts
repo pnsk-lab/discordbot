@@ -11,6 +11,7 @@ const envSchema = v.object({
 		v.string(),
 		v.transform(str => str.split(",")),
 	),
+	GITHUB_SECRET: v.optional(v.string()),
 });
 export const env = v.parse(envSchema, Bun.env);
 

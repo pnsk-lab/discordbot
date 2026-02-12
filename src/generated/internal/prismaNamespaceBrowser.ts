@@ -52,7 +52,9 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   AutoInviteForum: 'AutoInviteForum',
-  Guild: 'Guild'
+  Guild: 'Guild',
+  DiscordForum: 'DiscordForum',
+  DiscordForumThread: 'DiscordForumThread'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -87,6 +89,23 @@ export const GuildScalarFieldEnum = {
 } as const
 
 export type GuildScalarFieldEnum = (typeof GuildScalarFieldEnum)[keyof typeof GuildScalarFieldEnum]
+
+
+export const DiscordForumScalarFieldEnum = {
+  id: 'id',
+  webhookId: 'webhookId'
+} as const
+
+export type DiscordForumScalarFieldEnum = (typeof DiscordForumScalarFieldEnum)[keyof typeof DiscordForumScalarFieldEnum]
+
+
+export const DiscordForumThreadScalarFieldEnum = {
+  id: 'id',
+  githubRepoId: 'githubRepoId',
+  forumId: 'forumId'
+} as const
+
+export type DiscordForumThreadScalarFieldEnum = (typeof DiscordForumThreadScalarFieldEnum)[keyof typeof DiscordForumThreadScalarFieldEnum]
 
 
 export const SortOrder = {

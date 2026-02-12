@@ -385,7 +385,9 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   AutoInviteForum: 'AutoInviteForum',
-  Guild: 'Guild'
+  Guild: 'Guild',
+  DiscordForum: 'DiscordForum',
+  DiscordForumThread: 'DiscordForumThread'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -401,7 +403,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "autoInviteForum" | "guild"
+    modelProps: "autoInviteForum" | "guild" | "discordForum" | "discordForumThread"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -553,6 +555,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    DiscordForum: {
+      payload: Prisma.$DiscordForumPayload<ExtArgs>
+      fields: Prisma.DiscordForumFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.DiscordForumFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.DiscordForumFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumPayload>
+        }
+        findFirst: {
+          args: Prisma.DiscordForumFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.DiscordForumFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumPayload>
+        }
+        findMany: {
+          args: Prisma.DiscordForumFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumPayload>[]
+        }
+        create: {
+          args: Prisma.DiscordForumCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumPayload>
+        }
+        createMany: {
+          args: Prisma.DiscordForumCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.DiscordForumCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumPayload>[]
+        }
+        delete: {
+          args: Prisma.DiscordForumDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumPayload>
+        }
+        update: {
+          args: Prisma.DiscordForumUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumPayload>
+        }
+        deleteMany: {
+          args: Prisma.DiscordForumDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.DiscordForumUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.DiscordForumUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumPayload>[]
+        }
+        upsert: {
+          args: Prisma.DiscordForumUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumPayload>
+        }
+        aggregate: {
+          args: Prisma.DiscordForumAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateDiscordForum>
+        }
+        groupBy: {
+          args: Prisma.DiscordForumGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DiscordForumGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.DiscordForumCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DiscordForumCountAggregateOutputType> | number
+        }
+      }
+    }
+    DiscordForumThread: {
+      payload: Prisma.$DiscordForumThreadPayload<ExtArgs>
+      fields: Prisma.DiscordForumThreadFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.DiscordForumThreadFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumThreadPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.DiscordForumThreadFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumThreadPayload>
+        }
+        findFirst: {
+          args: Prisma.DiscordForumThreadFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumThreadPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.DiscordForumThreadFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumThreadPayload>
+        }
+        findMany: {
+          args: Prisma.DiscordForumThreadFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumThreadPayload>[]
+        }
+        create: {
+          args: Prisma.DiscordForumThreadCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumThreadPayload>
+        }
+        createMany: {
+          args: Prisma.DiscordForumThreadCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.DiscordForumThreadCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumThreadPayload>[]
+        }
+        delete: {
+          args: Prisma.DiscordForumThreadDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumThreadPayload>
+        }
+        update: {
+          args: Prisma.DiscordForumThreadUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumThreadPayload>
+        }
+        deleteMany: {
+          args: Prisma.DiscordForumThreadDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.DiscordForumThreadUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.DiscordForumThreadUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumThreadPayload>[]
+        }
+        upsert: {
+          args: Prisma.DiscordForumThreadUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DiscordForumThreadPayload>
+        }
+        aggregate: {
+          args: Prisma.DiscordForumThreadAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateDiscordForumThread>
+        }
+        groupBy: {
+          args: Prisma.DiscordForumThreadGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DiscordForumThreadGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.DiscordForumThreadCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DiscordForumThreadCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -608,6 +758,23 @@ export const GuildScalarFieldEnum = {
 } as const
 
 export type GuildScalarFieldEnum = (typeof GuildScalarFieldEnum)[keyof typeof GuildScalarFieldEnum]
+
+
+export const DiscordForumScalarFieldEnum = {
+  id: 'id',
+  webhookId: 'webhookId'
+} as const
+
+export type DiscordForumScalarFieldEnum = (typeof DiscordForumScalarFieldEnum)[keyof typeof DiscordForumScalarFieldEnum]
+
+
+export const DiscordForumThreadScalarFieldEnum = {
+  id: 'id',
+  githubRepoId: 'githubRepoId',
+  forumId: 'forumId'
+} as const
+
+export type DiscordForumThreadScalarFieldEnum = (typeof DiscordForumThreadScalarFieldEnum)[keyof typeof DiscordForumThreadScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -771,6 +938,8 @@ export type PrismaClientOptions = ({
 export type GlobalOmitConfig = {
   autoInviteForum?: Prisma.AutoInviteForumOmit
   guild?: Prisma.GuildOmit
+  discordForum?: Prisma.DiscordForumOmit
+  discordForumThread?: Prisma.DiscordForumThreadOmit
 }
 
 /* Types for Logging */
