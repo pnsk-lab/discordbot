@@ -7,6 +7,7 @@ import type {
 } from "$types";
 import { Client, Events, GatewayIntentBits } from "discord.js";
 import dns from "node:dns";
+import https from "node:https";
 import { bulkInvite } from "./lib/bulkinvite";
 import { chatInputCommandHandler } from "./lib/chatInputCommandHandler";
 import { modalHandler } from "./lib/modalHandler";
@@ -16,6 +17,16 @@ import { webhookMapperRoute } from "./webhook_mapper";
 // render ploblems
 dns.setDefaultResultOrder("ipv4first");
 console.log("Hello via Bun!");
+
+https
+	.get("https://discord.com/api/v10/gateway", res => {
+		console.log("status:", res.statusCode);
+		res.on("data", d => process.stdout.write(d));
+	})
+	.on("error", e => {
+		console.error("https error:", e);
+	});
+
 export const IS_DEV = env.NODE_ENV === "development";
 console.log(`Running in ${IS_DEV ? "development" : "production"} mode`);
 console.log("now: ", new Date().toISOString());
