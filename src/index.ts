@@ -5,9 +5,10 @@ import type {
 	ModalDefinition,
 	SlashCommandDefinitionInternal,
 } from "$types";
-import { Client, Events, GatewayIntentBits, MessageFlags } from "discord.js";
+import { Client, Events, GatewayIntentBits } from "discord.js";
 import { bulkInvite } from "./lib/bulkinvite";
 import { chatInputCommandHandler } from "./lib/chatInputCommandHandler";
+import { modalHandler } from "./lib/modalHandler";
 import { scanModule } from "./lib/scanModule";
 import { unwrapJsonLike } from "./types/helper";
 import { webhookMapperRoute } from "./webhook_mapper";
@@ -61,24 +62,7 @@ client.once(Events.ClientReady, async client => {
 client.on(Events.InteractionCreate, async interaction => {
 	if (interaction.isChatInputCommand())
 		chatInputCommandHandler(interaction, slashCmdDefs);
-	if (interaction.isModalSubmit()) {
-		const [modalId, ctxId] = interaction.customId.split(":");
-		console.log(`Modal submitted: ${modalId} with ctxId: ${ctxId}`);
-		const modalDef = modalDefs.get(modalId);
-		if (!modalDef) {
-			console.warn(`[ ⚠️  ] Modal ${modalId} not found`);
-			return;
-		}
-		try {
-			await modalDef.handle(interaction, ctxId);
-		} catch (error) {
-			console.error(error);
-			await interaction.reply({
-				content: "There was an error while executing this modal!",
-				flags: MessageFlags.Ephemeral,
-			});
-		}
-	}
+	if (interaction.isModalSubmit()) modalHandler(interaction, modalDefs);
 });
 
 client.on(Events.ThreadCreate, async thread => {

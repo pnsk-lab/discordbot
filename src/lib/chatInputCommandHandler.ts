@@ -11,6 +11,7 @@ export async function chatInputCommandHandler(
 		return;
 	}
 	try {
+		console.log(`[ 🏃‍♂️ ] Executing command /${interaction.commandName}...`);
 		await cmd.handle(interaction);
 	} catch (error) {
 		console.error(error);
