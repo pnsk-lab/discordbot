@@ -15,6 +15,7 @@ import { webhookMapperRoute } from "./webhook_mapper";
 console.log("Hello via Bun!");
 export const IS_DEV = env.NODE_ENV === "development";
 console.log(`Running in ${IS_DEV ? "development" : "production"} mode`);
+console.log("now: ", new Date().toISOString());
 
 export const slashCmdDefs = new Map<string, SlashCommandDefinitionInternal>();
 for await (const mod of scanModule<CmdModule>("interactive/cmd")) {
@@ -86,7 +87,7 @@ await client.login(env.DISCORD_TOKEN);
 
 Bun.serve({
 	hostname: "0.0.0.0",
-	port: "10000",
+	port: process.env.PORT || 10000,
 	routes: {
 		"/": () =>
 			new Response(
