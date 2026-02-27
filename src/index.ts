@@ -89,7 +89,9 @@ Bun.serve({
 	port: "10000",
 	routes: {
 		"/": () =>
-			new Response("Hello from Bun! This is a Discord bot running with Bun."),
+			new Response(
+				`Hello from Bun! This is a Discord bot running with Bun. now: ${new Date().toISOString()}`,
+			),
 		...webhookMapperRoute,
 	},
 });
