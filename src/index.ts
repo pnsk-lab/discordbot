@@ -83,8 +83,6 @@ client.on(Events.ThreadCreate, async thread => {
 	await bulkInvite(thread.guild, thread.id, autoInvite.guild.bulkInviteRoleId);
 });
 
-await client.login(env.DISCORD_TOKEN);
-
 Bun.serve({
 	hostname: "0.0.0.0",
 	port: process.env.PORT || 10000,
@@ -96,3 +94,5 @@ Bun.serve({
 		...webhookMapperRoute,
 	},
 });
+
+await client.login(env.DISCORD_TOKEN);
