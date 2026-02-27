@@ -94,4 +94,12 @@ Bun.serve({
 		...webhookMapperRoute,
 	},
 });
+console.log("env.token", env.DISCORD_TOKEN);
+client.on("debug", m => console.log("[DEBUG]", m));
+client.on("warn", m => console.log("[WARN]", m));
+client.on("error", e => console.error("[ERROR]", e));
+await fetch("https://discord.com/api/v10/gateway")
+	.then(r => console.log(`Gateway response status: ${r.status}`))
+	.catch(e => console.error("Error fetching gateway:", e));
+
 await client.login(env.DISCORD_TOKEN);
