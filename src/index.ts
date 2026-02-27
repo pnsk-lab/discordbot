@@ -6,12 +6,15 @@ import type {
 	SlashCommandDefinitionInternal,
 } from "$types";
 import { Client, Events, GatewayIntentBits } from "discord.js";
+import dns from "node:dns";
 import { bulkInvite } from "./lib/bulkinvite";
 import { chatInputCommandHandler } from "./lib/chatInputCommandHandler";
 import { modalHandler } from "./lib/modalHandler";
 import { scanModule } from "./lib/scanModule";
 import { unwrapJsonLike } from "./types/helper";
 import { webhookMapperRoute } from "./webhook_mapper";
+// render ploblems
+dns.setDefaultResultOrder("ipv4first");
 console.log("Hello via Bun!");
 export const IS_DEV = env.NODE_ENV === "development";
 console.log(`Running in ${IS_DEV ? "development" : "production"} mode`);
