@@ -94,5 +94,9 @@ Bun.serve({
 		...webhookMapperRoute,
 	},
 });
+console.log("env.token", env.DISCORD_TOKEN);
+client.on("debug", m => console.log("[DEBUG]", m));
+client.on("warn", m => console.log("[WARN]", m));
+client.on("error", e => console.error("[ERROR]", e));
 
 await client.login(env.DISCORD_TOKEN);
