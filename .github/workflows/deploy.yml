@@ -10,10 +10,10 @@ jobs:
 
     env:
       BOT_DIR: /home/p_nsk/pnsk-lab-bot
-      PATH: /home/p_nsk/.bun/bin:${{ env.PATH }}
     steps:
       - name: Deploy bot
         run: |
+          export PATH="/home/p_nsk/.bun/bin:$PATH"
           cd $BOT_DIR
           git fetch origin
           git reset --hard origin/main
