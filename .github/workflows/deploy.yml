@@ -1,0 +1,22 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, deploy]
+
+    env:
+      BOT_NAME: pnsk-lab-bot
+      BOT_DIR: /home/p_nsk/pnsk-lab-bot
+    steps:
+      - name: Deploy bot
+        run: |
+          cd $BOT_DIR
+          git fetch origin
+          git reset --hard origin/main
+          bun install
+          bun run build
+          sudo systemctl restart pnsk-lab-bot
