@@ -9,8 +9,8 @@ jobs:
     runs-on: [self-hosted, deploy]
 
     env:
-      BOT_NAME: pnsk-lab-bot
       BOT_DIR: /home/p_nsk/pnsk-lab-bot
+      PATH: /home/p_nsk/.bun/bin:${{ env.PATH }}
     steps:
       - name: Deploy bot
         run: |
